@@ -1,6 +1,6 @@
 <h1> Create a new Article </h1>
 
-<%= form_for @article do |f|%>
+<%= form_for @article, data: { turbo: false } do |f|%>
   <p>
     <%= f.label :title, "New Title" %>
     <%= f.text_field :title %>
@@ -15,4 +15,13 @@
   <p>
     <%= f.submit "Create an Article" %>
   </p>
+
+  <% if @article.errors.any? %>
+    <h2>The following errors prevented the article from saving:</h2>
+    <ul>
+      <% @article.errors.full_messages.each do |msg|%>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  <% end %>
 <% end %>
