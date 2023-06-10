@@ -1,6 +1,6 @@
 <h1> Create a new Article </h1>
 
-<%= form_for @article, data: { turbo: false } do |f|%>
+<%= form_with model: @article, data: { turbo: false } do |f|%>
   <p>
     <%= f.label :title, "New Title" %>
     <%= f.text_field :title %>
